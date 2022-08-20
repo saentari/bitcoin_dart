@@ -1,12 +1,13 @@
-import 'dart:typed_data';
 import 'dart:convert';
-import '../../src/crypto.dart';
-import 'varuint.dart';
-import '../../src/models/networks.dart';
+import 'dart:typed_data';
 
-Uint8List magicHash(String message, [NetworkType network]) {
+import '../../src/crypto.dart';
+import '../../src/models/networks.dart';
+import 'varuint.dart';
+
+Uint8List magicHash(String message, [NetworkType? network]) {
   network = network ?? bitcoin;
-  Uint8List messagePrefix = utf8.encode(network.messagePrefix);
+  Uint8List messagePrefix = utf8.encode(network.messagePrefix) as Uint8List;
   int messageVISize = encodingLength(message.length);
   int length = messagePrefix.length + messageVISize + message.length;
   Uint8List buffer = new Uint8List(length);

@@ -1,9 +1,11 @@
 import 'dart:typed_data';
-import 'package:hex/hex.dart';
+
 import 'package:bip32/src/utils/ecurve.dart' as ecc;
+import 'package:hex/hex.dart';
+
+import 'check_types.dart';
 import 'constants/op.dart';
 import 'push_data.dart' as pushData;
-import 'check_types.dart';
 
 Map<int, String> REVERSE_OPS =
     OPS.map((String string, int number) => new MapEntry(number, string));
@@ -11,12 +13,12 @@ final OP_INT_BASE = OPS['OP_RESERVED'];
 final ZERO = Uint8List.fromList([0]);
 
 Uint8List compile(List<dynamic> chunks) {
-  final bufferSize = chunks.fold(0, (acc, chunk) {
+  final dynamic bufferSize = chunks.fold<int>(0, (int acc, chunk) {
     if (chunk is int) return acc + 1;
     if (chunk.length == 1 && asMinimalOP(chunk) != null) {
       return acc + 1;
     }
-    return acc + pushData.encodingLength(chunk.length) + chunk.length;
+    return acc + pushData.encodingLength(chunk.length) + chunk.length as int;
   });
   var buffer = new Uint8List(bufferSize);
 
@@ -33,8 +35,8 @@ Uint8List compile(List<dynamic> chunks) {
       }
       pushData.EncodedPushData epd =
           pushData.encode(buffer, chunk.length, offset);
-      offset += epd.size;
-      buffer = epd.buffer;
+      offset += epd.size!;
+      buffer = epd.buffer!;
       buffer.setRange(offset, offset + chunk.length, chunk);
       offset += chunk.length;
       // opcode
@@ -49,7 +51,7 @@ Uint8List compile(List<dynamic> chunks) {
   return buffer;
 }
 
-List<dynamic> decompile(dynamic buffer) {
+List<dynamic>? decompile(dynamic buffer) {
   List<dynamic> chunks = [];
 
   if (buffer == null) return chunks;
@@ -65,13 +67,13 @@ List<dynamic> decompile(dynamic buffer) {
 
       // did reading a pushDataInt fail?
       if (d == null) return null;
-      i += d.size;
+      i += d.size!;
 
       // attempt to read too much data?
-      if (i + d.number > buffer.length) return null;
+      if (i + d.number! > buffer.length) return null;
 
-      final data = buffer.sublist(i, i + d.number);
-      i += d.number;
+      final data = buffer.sublist(i, i + d.number!);
+      i += d.number!;
 
       // decompile minimally
       final op = asMinimalOP(data);
@@ -101,7 +103,7 @@ Uint8List fromASM(String asm) {
 String toASM(List<dynamic> c) {
   List<dynamic> chunks;
   if (c is Uint8List) {
-    chunks = decompile(c);
+    chunks = decompile(c)!;
   } else {
     chunks = c;
   }
@@ -117,10 +119,10 @@ String toASM(List<dynamic> c) {
   }).join(' ');
 }
 
-int asMinimalOP(Uint8List buffer) {
+int? asMinimalOP(Uint8List buffer) {
   if (buffer.length == 0) return OPS['OP_0'];
   if (buffer.length != 1) return null;
-  if (buffer[0] >= 1 && buffer[0] <= 16) return OP_INT_BASE + buffer[0];
+  if (buffer[0] >= 1 && buffer[0] <= 16) return OP_INT_BASE! + buffer[0];
   if (buffer[0] == 0x81) return OPS['OP_1NEGATE'];
   return null;
 }
@@ -179,7 +181,7 @@ Uint8List bip66encode(r, s) {
   if (lenS > 1 && (s[0] == 0x00) && s[1] & 0x80 == 0)
     throw new ArgumentError('S value excessively padded');
 
-  var signature = new Uint8List(6 + lenR + lenS);
+  var signature = new Uint8List(6 + (lenR as int) + (lenS as int));
 
   // 0x30 [total-length] 0x02 [R-length] [R] 0x02 [S-length] [S]
   signature[0] = 0x30;

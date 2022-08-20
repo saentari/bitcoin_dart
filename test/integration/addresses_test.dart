@@ -1,10 +1,12 @@
-import '../../lib/src/models/networks.dart' as NETWORKS;
-import '../../lib/src/ecpair.dart' show ECPair;
-import '../../lib/src/payments/index.dart' show PaymentData;
-import '../../lib/src/payments/p2pkh.dart' show P2PKH, P2PKHData;
-import '../../lib/src/payments/p2wpkh.dart' show P2WPKH;
-import 'package:pointycastle/digests/sha256.dart';
 import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:bitcoin_dart/src/ecpair.dart' show ECPair;
+import 'package:bitcoin_dart/src/models/networks.dart' as NETWORKS;
+import 'package:bitcoin_dart/src/payments/index.dart' show PaymentData;
+import 'package:bitcoin_dart/src/payments/p2pkh.dart' show P2PKH;
+import 'package:bitcoin_dart/src/payments/p2wpkh.dart' show P2WPKH;
+import 'package:pointycastle/digests/sha256.dart';
 import 'package:test/test.dart';
 
 NETWORKS.NetworkType litecoin = new NETWORKS.NetworkType(
@@ -30,7 +32,7 @@ main() {
     });
     test('can generate an address from a SHA256 hash', () {
       final hash = new SHA256Digest()
-          .process(utf8.encode('correct horse battery staple'));
+          .process(utf8.encode('correct horse battery staple') as Uint8List);
       final keyPair = ECPair.fromPrivateKey(hash);
       final address =
           new P2PKH(data: new PaymentData(pubkey: keyPair.publicKey))

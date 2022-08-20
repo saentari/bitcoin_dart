@@ -1,3 +1,6 @@
+## 2.0.3
+- Add support for null-safety
+
 ## 2.0.2
 - Add support for optional 'noStrict' parameter in Transaction.fromBuffer
 

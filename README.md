@@ -1,23 +1,31 @@
-<a href="https://pub.dartlang.org/packages/bitcoin_flutter"><img alt="pub version" src="https://img.shields.io/pub/v/bitcoin_flutter.svg?style=flat-square"></a>
+# bitcoin_dart
 
-# bitcoin_flutter
-
-A dart Bitcoin library for Flutter.
+A Bitcoin library for Flutter written in Dart.
 
 Released under the terms of the [MIT LICENSE](LICENSE).
 
 Inspired by [bitcoinjs](https://github.com/bitcoinjs/bitcoinjs-lib)
 
+Forked from [bitcoin_flutter](https://github.com/dart-bitcoin/bitcoin_flutter)
+
 Otherwise, pull requests are appreciated.
 
 ## Installing
 
-[Flutter Packages](https://pub.dartlang.org/packages/bitcoin_flutter#-installing-tab-)
+Add this to your package's pubspec.yaml (and run a dart pub get):
+
+```yaml
+dependencies:
+  bitcoin_dart:
+    git:
+      url: https://github.com/saentari/bitcoin_dart
+      ref: master
+```
 
 ## Examples
 
 ```dart
-import 'package:bitcoin_flutter/bitcoin_flutter.dart';
+import 'package:bitcoin_flutter/bitcoin_dart.dart';
 import 'package:bip39/bip39.dart' as bip39;
 
 main() {
@@ -45,23 +53,23 @@ main() {
 ```
 
 The below examples are implemented as integration tests:
-- [Generate a random address](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/addresses_test.dart#L21)
-- [Validating address](https://github.com/anicdh/bitcoin-dart/blob/master/test/address_test.dart)
-- [Generate an address from a SHA256 hash](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/addresses_test.dart#L26)
-- [Import an address via WIF](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/addresses_test.dart#L32)
-- [Generate a Testnet address](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/addresses_test.dart#L37)
-- [Generate a Litecoin address](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/addresses_test.dart#L45)
-- [Generate a native Segwit address](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/addresses_test.dart#L53)
-- [Create a 1-to-1 Transaction](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/transactions_test.dart#L10)
-- [Create a 2-to-2 Transaction](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/transactions_test.dart#L29)
-- [Create an OP_RETURN Transaction](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/transactions_test.dart#L61)
-- [Create a Transaction with a SegWit P2WPKH input](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/transactions_test.dart#L45)
-- [Import a BIP32 testnet xpriv and export to WIF](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/bip32_test.dart#L9)
-- [Export a BIP32 xpriv, then import it](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/bip32_test.dart#L14)
-- [Export a BIP32 xpub](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/bip32_test.dart#L23)
-- [Create a BIP32, bitcoin, account 0, external address](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/bip32_test.dart#L30)
-- [Create a BIP44, bitcoin, account 0, external address](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/bip32_test.dart#L41)
-- [Use BIP39 to generate BIP32 addresses](https://github.com/anicdh/bitcoin-dart/blob/master/test/integration/bip32_test.dart#L56)
+- [Generate a random address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L25)
+- [Validating address](https://github.com/saentari/bitcoin_dart/blob/master/test/address_test.dart#L7)
+- [Generate an address from a SHA256 hash](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L33)
+- [Import an address via WIF](https://github.com/saentari/saentari/blob/master/test/integration/addresses_test.dart#L43)
+- [Generate a Testnet address](https://github.com/saentari/saentari/blob/master/test/integration/addresses_test.dart#L52)
+- [Generate a Litecoin address](https://github.com/saentari/saentari/blob/master/test/integration/addresses_test.dart#L64)
+- [Generate a native Segwit address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L75)
+- [Generate a native Segwit Testnet address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L84)
+- [Create a 1-to-1 Transaction](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/transactions_test.dart#L10)
+- [Create a 2-to-2 Transaction](https://github.com/saentari/bitcoin_dart/blob/test/integration/transactions_test.dart#L29)
+- [Create a Transaction with a SegWit P2WPKH input](https://github.com/saentari/bitcoin_dart/blob/test/integration/transactions_test.dart#L61)
+- [Import a BIP32 testnet xpriv and export to WIF](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/bip32_test.dart#L13)
+- [Export a BIP32 xpriv, then import it](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/bip32_test.dart#L26)
+- [Export a BIP32 xpub](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/bip32_test.dart#L36)
+- [Create a BIP32, bitcoin, account 0, external address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/bip32_test.dart#L45)
+- [Create a BIP44, bitcoin, account 0, external address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/bip32_test.dart#L56)
+- [Use BIP39 to generate BIP32 addresses](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/bip32_test.dart#L74)
 
 
 ### TODO
