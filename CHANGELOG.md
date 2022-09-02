@@ -1,3 +1,6 @@
+## 2.0.4
+- Add support for multilingual wordlist
+
 ## 2.0.3
 - Add support for null-safety
 

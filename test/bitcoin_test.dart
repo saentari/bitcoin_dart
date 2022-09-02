@@ -23,4 +23,15 @@ void main() {
           'xprv9s21ZrQH143K4DRBUU8Dp25M61mtjm9T3LsdLLFCXL2U6AiKEqs7dtCJWGFcDJ9DtHpdwwmoqLgzPrW7unpwUyL49FZvut9xUzpNB6wbEnz');
     });
   });
+
+  group('local language seed phrase', () {
+    var mnemonic = bip39.generateMnemonic(language: "french");
+
+    test('valid mnemonic on default english wordlist', () {
+      expect(bip39.validateMnemonic(mnemonic), false);
+    });
+    test('valid mnemonic on french wordlist', () {
+      expect(bip39.validateMnemonic(mnemonic, language: "french"), true);
+    });
+  });
 }
