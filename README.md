@@ -53,17 +53,18 @@ main() {
 ```
 
 The below examples are implemented as integration tests:
-- [Generate a random address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L25)
+- [Generate a random address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L26)
 - [Validating address](https://github.com/saentari/bitcoin_dart/blob/master/test/address_test.dart#L7)
-- [Generate an address from a SHA256 hash](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L33)
-- [Import an address via WIF](https://github.com/saentari/saentari/blob/master/test/integration/addresses_test.dart#L43)
-- [Generate a Testnet address](https://github.com/saentari/saentari/blob/master/test/integration/addresses_test.dart#L52)
-- [Generate a Litecoin address](https://github.com/saentari/saentari/blob/master/test/integration/addresses_test.dart#L64)
-- [Generate a native Segwit address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L75)
-- [Generate a native Segwit Testnet address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L84)
-- [Create a 1-to-1 Transaction](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/transactions_test.dart#L10)
-- [Create a 2-to-2 Transaction](https://github.com/saentari/bitcoin_dart/blob/test/integration/transactions_test.dart#L29)
-- [Create a Transaction with a SegWit P2WPKH input](https://github.com/saentari/bitcoin_dart/blob/test/integration/transactions_test.dart#L61)
+- [Generate an address from a SHA256 hash](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L32)
+- [Import an address via WIF](https://github.com/saentari/saentari/blob/master/test/integration/addresses_test.dart#L40)
+- [Generate a Testnet address](https://github.com/saentari/saentari/blob/master/test/integration/addresses_test.dart#L47)
+- [Generate a Litecoin address](https://github.com/saentari/saentari/blob/master/test/integration/addresses_test.dart#L58)
+- [Generate a native Segwit address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L68)
+- [Generate a native Segwit Testnet address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#75)
+- [Generate a Segwit P2WPKH-in-P2SH address](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/addresses_test.dart#L85)
+- [Create a 1-to-1 Transaction](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/transactions_test.dart#L11)
+- [Create a 2-to-2 Transaction](https://github.com/saentari/bitcoin_dart/blob/test/integration/transactions_test.dart#L30)
+- [Create a Transaction with a SegWit P2WPKH input](https://github.com/saentari/bitcoin_dart/blob/test/integration/transactions_test.dart#L62)
 - [Import a BIP32 testnet xpriv and export to WIF](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/bip32_test.dart#L13)
 - [Export a BIP32 xpriv, then import it](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/bip32_test.dart#L26)
 - [Export a BIP32 xpub](https://github.com/saentari/bitcoin_dart/blob/master/test/integration/bip32_test.dart#L36)
@@ -73,7 +74,6 @@ The below examples are implemented as integration tests:
 
 
 ### TODO
-- Generate a SegWit P2SH address
 - Generate a SegWit multisig address
 - Create a Transaction with a P2SH(multisig) input
 - Build a Transaction w/ psbt format
@@ -86,7 +86,7 @@ pub run test
 ```
 
 ## Complementing Libraries
-- [BIP39](https://github.com/anicdh/bip39) - Mnemonic generation for deterministic keys
+- [BIP39](https://github.com/saentari/bip39) - Mnemonic generation for deterministic keys
 - [BIP32](https://github.com/anicdh/bip32) - BIP32
 - [Base58 Check](https://github.com/anicdh/bs58check-dart) - Base58 check encoding/decoding
 

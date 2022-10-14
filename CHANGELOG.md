@@ -1,3 +1,6 @@
+## 2.1.0
+- Support P2SH(P2WPKH)
+
 ## 2.0.4
 - Add support for multilingual wordlist
 

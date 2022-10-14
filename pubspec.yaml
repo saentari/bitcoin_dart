@@ -1,20 +1,27 @@
 name: bitcoin_dart
-description: A Bitcoin library for Flutter written in Dart. BIP32, BIP39, P2PKH integration.
-version: 2.0.4
+description: A Bitcoin library for Flutter written in Dart. BIP32, BIP39, BIP49, BIP84 integration.
+version: 2.1.0
 homepage: https://github.com/saentari/bitcoin_dart/
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
+  bech32: 0.2.1
+  bip32: ^2.0.0
   bip39:
     git:
       url: https://github.com/saentari/bip39.git
-  bip32: ^2.0.0
-  pointycastle: ^3.6.0
-  hex: ^0.2.0
   bs58check: ^1.0.2
-  bech32: 0.2.1
+  hex: ^0.2.0
+  pointycastle: ^3.6.0
 
 dev_dependencies:
   test: ^1.15.4
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.1
